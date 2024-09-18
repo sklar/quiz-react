@@ -1,0 +1,55 @@
+/* open props */
+@import "open-props/animations";
+@import "open-props/aspects";
+@import "open-props/borders";
+@import "open-props/colors";
+@import "open-props/easings";
+@import "open-props/fonts";
+@import "open-props/media";
+@import "open-props/sizes";
+
+/* @import "open-props/style"; */
+
+/* open props extras */
+@import "open-props/normalize";
+@import "open-props/buttons";
+
+html {
+	font-family: monospace;
+
+	@media (--OSlight) {
+		--text-1: var(--gray-12);
+		--text-2: var(--gray-7);
+
+		--surface-1: var(--stone-3);
+		--surface-2: var(--stone-4);
+		--surface-3: var(--stone-5);
+		--surface-4: var(--stone-6);
+	}
+
+	/* @media (--OSdark) {} */
+}
+
+body {
+	padding: var(--size-px-5);
+}
+
+[id="root"] {
+	display: contents;
+}
+
+button {
+	--_bg: var(--indigo-7);
+	--_text: white;
+	--_size: var(--font-size-4);
+
+	border: 0;
+	border-radius: var(--radius-drawn-3);
+	font-family: sans-serif;
+	padding: 1ch var(--size-9);
+	text-shadow: none;
+
+	&:is(:focus, :hover) {
+		--_bg: var(--indigo-9);
+	}
+}

@@ -12,6 +12,8 @@
 		"type:check": "tsc --noEmit"
 	},
 	"dependencies": {
+		"open-props": "^1.7.6",
+		"party-js": "^2.2.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
@@ -20,7 +22,9 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
+		"browserslist": "^4.23.3",
 		"globals": "^15.9.0",
+		"lightningcss": "^1.27.0",
 		"typescript": "^5.5.3",
 		"vite": "^5.4.1"
 	},
