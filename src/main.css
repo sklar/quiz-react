@@ -8,8 +8,6 @@
 @import "open-props/media";
 @import "open-props/sizes";
 
-/* @import "open-props/style"; */
-
 /* open props extras */
 @import "open-props/normalize";
 @import "open-props/buttons";
@@ -27,15 +25,20 @@ html {
 		--surface-4: var(--stone-6);
 	}
 
-	/* @media (--OSdark) {} */
+	@media (--OSdark) {
+		--surface-1: var(--gray-11);
+		--surface-2: var(--gray-10);
+		--surface-3: var(--gray-9);
+		--surface-4: var(--gray-8);
+	}
 }
 
 body {
 	padding: var(--size-px-5);
 }
 
-[id="root"] {
-	display: contents;
+p {
+	max-inline-size: unset;
 }
 
 button {
@@ -52,4 +55,8 @@ button {
 	&:is(:focus, :hover) {
 		--_bg: var(--indigo-9);
 	}
+}
+
+[id="root"] {
+	display: contents;
 }

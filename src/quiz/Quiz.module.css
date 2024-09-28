@@ -13,18 +13,7 @@
 }
 
 .body {
-	aspect-ratio: var(--ratio-golden);
-	background: light-dark(var(--stone-2), var(--gray-12)) no-repeat center /
-		cover;
-	block-size: 40vh;
-	border-radius: var(--radius-drawn-1);
-	/* biome-ignore format: true */
-	box-shadow:
-		0 0 80px -40px hsl(from var(--gray-12) h s l / 20%)
-		/* inset 100vw 0 tomato,  */
-		/* var(--shadow-1), */
-		/* var(--shadow-5) */
-	;
+	block-size: var(--size-12);
 	display: grid;
 	place-items: center;
 }
@@ -35,7 +24,6 @@
 	font-size: var(--font-size-8);
 	font-weight: var(--font-weight-8);
 	gap: var(--size-3);
-	margin-block: var(--size-7);
 
 	input {
 		background: none;
@@ -50,19 +38,44 @@
 .footer {
 }
 
+/* quiz progress */
+.progress {
+}
+
+/* quiz result */
+.result {
+	display: grid;
+	gap: var(--size-8);
+	justify-items: center;
+}
+
 .timer {
-	margin-block-end: var(--size-4);
+	font-size: var(--font-size-8);
+	font-weight: var(--font-weight-8);
+	line-height: unset;
 }
 
 .button {
 	animation: var(--animation-fade-in) forwards, var(--animation-slide-in-up);
-	animation-timing-function: linear, var(--ease-spring-2);
+	animation-delay: 0.8s;
 	animation-duration: 0.3s, 0.6s;
+	animation-timing-function: linear, var(--ease-spring-3);
 	opacity: 0;
 }
 
+/* celebration */
+.celebrationGif,
 .confetti {
 	inset: 0;
 	position: fixed;
 	z-index: -1;
+}
+
+.celebrationGif {
+	background-position: center;
+	background-size: cover;
+	border-radius: var(--radius-3);
+	inset: 4vmax;
+	max-inline-size: 2000px;
+	margin-inline: auto;
 }

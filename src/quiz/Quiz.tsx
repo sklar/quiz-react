@@ -1,7 +1,9 @@
 import party from 'party-js'
 import { type FC, useCallback, useEffect, useRef, useState } from 'react'
 
+import { QuizProgress } from './QuizProgress'
 import { QuizQuestion } from './QuizQuestion'
+import { QuizResult } from './QuizResult'
 import { useQuiz } from './quiz.controller'
 
 import classes from './Quiz.module.css'
@@ -62,34 +64,23 @@ export const Quiz: FC = () => {
 			<header className={classes.header}>
 				<h1>Math Quiz</h1>
 			</header>
-			<div
-				className={classes.body}
-				style={{ backgroundImage: `url(${celebrationGif})` }}
-			>
+			<div className={classes.body}>
 				{!isSetComplete && currentQuestion && (
 					<QuizQuestion question={currentQuestion} onAnswer={answerQuestion} />
 				)}
 			</div>
 			<footer>
 				{!isSetComplete ? (
-					<p>
-						Correct: {questions.filter((q) => q.isCorrect).length} /{' '}
-						{questions.length}
-					</p>
+					<QuizProgress questions={questions} />
 				) : (
-					<>
-						<p className={classes.timer}>{timeTaken.toFixed(0)} seconds</p>
-						<button
-							type="button"
-							className={classes.button}
-							onClick={handleReload}
-						>
-							Reload
-						</button>
-					</>
+					<QuizResult time={timeTaken} onReload={handleReload} />
 				)}
 			</footer>
 			<div ref={confettiRef} className={classes.confetti} />
+			<div
+				className={classes.celebrationGif}
+				style={{ backgroundImage: `url(${celebrationGif})` }}
+			/>
 		</section>
 	)
 }
