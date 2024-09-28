@@ -39,7 +39,7 @@ export const Quiz: FC = () => {
 	const handleReload = useCallback(() => {
 		setCelebrationGif('')
 		generateNewSet()
-	}, [])
+	}, [generateNewSet])
 
 	useEffect(() => {
 		generateNewSet()

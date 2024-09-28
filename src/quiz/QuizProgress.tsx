@@ -9,10 +9,7 @@ interface QuizProgressProps {
 
 export const QuizProgress: FC<QuizProgressProps> = ({ questions }) => {
 	return (
-		<p
-			className={classes.result}
-			aria-description="Correct answers of all answers in the set"
-		>
+		<p className={classes.result} aria-label="Correct answers of all answers">
 			{questions.filter((q) => q.isCorrect).length} of {questions.length}
 		</p>
 	)

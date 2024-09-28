@@ -12,14 +12,14 @@ export const QuizResult: FC<QuizResultProps> = ({ time, onReload }) => {
 		<p className={classes.result}>
 			<time
 				className={classes.timer}
-				aria-description="Time to complete the set of answers"
+				aria-label="Time to complete the questions set"
 			>
 				{time.toFixed(0)} seconds
 			</time>
 			<button
 				type="button"
 				className={classes.button}
-				aria-description="Reload another set of answers"
+				aria-label="Load another set of questions"
 				onClick={onReload}
 			>
 				Reload

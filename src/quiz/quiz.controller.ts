@@ -20,7 +20,7 @@ interface QuizState {
 type QuizAction =
 	| { type: 'GENERATE_NEW_SET' }
 	| { type: 'ANSWER_QUESTION'; payload: { isCorrect: boolean } }
-  | { type: 'MOVE_TO_NEXT_QUESTION' }
+	| { type: 'MOVE_TO_NEXT_QUESTION' }
 	| { type: 'COMPLETE_SET' }
 
 const NUMBER_OF_QUESTIONS = 5
@@ -63,22 +63,26 @@ const quizReducer = (state: QuizState, action: QuizAction): QuizState => {
 			}
 
 		case 'ANSWER_QUESTION':
-      return {
-        ...state,
-        questions: state.questions.map((q, index) =>
-          index === state.currentQuestionIndex ? { ...q, isCorrect: action.payload.isCorrect } : q
-        ),
-      }
-    case 'MOVE_TO_NEXT_QUESTION':
-      const nextIncorrectIndex = state.questions.findIndex(
-        (q, index) => !q.isCorrect && index > state.currentQuestionIndex
-      )
-      return {
-        ...state,
-        currentQuestionIndex: nextIncorrectIndex !== -1
-          ? nextIncorrectIndex
-          : state.questions.findIndex((q) => !q.isCorrect),
-      }
+			return {
+				...state,
+				questions: state.questions.map((q, index) =>
+					index === state.currentQuestionIndex
+						? { ...q, isCorrect: action.payload.isCorrect }
+						: q,
+				),
+			}
+		case 'MOVE_TO_NEXT_QUESTION': {
+			const nextIncorrectIndex = state.questions.findIndex(
+				(q, index) => !q.isCorrect && index > state.currentQuestionIndex,
+			)
+			return {
+				...state,
+				currentQuestionIndex:
+					nextIncorrectIndex !== -1
+						? nextIncorrectIndex
+						: state.questions.findIndex((q) => !q.isCorrect),
+			}
+		}
 
 		case 'COMPLETE_SET':
 			return {
@@ -100,16 +104,16 @@ export const useQuiz = () => {
 	}, [])
 
 	const answerQuestion = useCallback((isCorrect: boolean) => {
-    dispatch({ type: 'ANSWER_QUESTION', payload: { isCorrect } })
-  }, [])
+		dispatch({ type: 'ANSWER_QUESTION', payload: { isCorrect } })
+	}, [])
 
-  useEffect(() => {
-    if (state.questions.every((q) => q.isCorrect)) {
-      dispatch({ type: 'COMPLETE_SET' })
-    } else if (state.questions[state.currentQuestionIndex]?.isCorrect) {
-      dispatch({ type: 'MOVE_TO_NEXT_QUESTION' })
-    }
-  }, [state.questions, state.currentQuestionIndex])
+	useEffect(() => {
+		if (state.questions.every((q) => q.isCorrect)) {
+			dispatch({ type: 'COMPLETE_SET' })
+		} else if (state.questions[state.currentQuestionIndex]?.isCorrect) {
+			dispatch({ type: 'MOVE_TO_NEXT_QUESTION' })
+		}
+	}, [state.questions, state.currentQuestionIndex])
 
 	return {
 		...state,

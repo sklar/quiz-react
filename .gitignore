@@ -1,27 +1,24 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Ignored files
+# @see https://git-scm.com/docs/gitignore
 
-node_modules
+# build
 dist
-dist-ssr
-*.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Local Netlify folder
+# ci
 .netlify
+
+# compilation
+*.tsbuildinfo
+
+# environment variables
+.env
+
+# dependencies
+node_modules
+
+# logs
+*-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

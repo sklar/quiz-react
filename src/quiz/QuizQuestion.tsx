@@ -17,7 +17,7 @@ export const QuizQuestion: FC<QuizQuestionProps> = ({ question, onAnswer }) => {
 
 		if (userAnswer === '') return
 
-		const isCorrect = parseInt(userAnswer) === calculateAnswer(question)
+		const isCorrect = Number.parseInt(userAnswer) === calculateAnswer(question)
 
 		onAnswer(isCorrect)
 		setUserAnswer('')
